@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useState } from "react";
+import "./App.css";
+import Feed from "./components/Feed/Feed";
+import Header from "./components/Header/Header";
+import Login from "./components/Login/Login";
+import Sidebar from "./components/Sidebar/Sidebar";
+import { useStateValue } from "./StateProvider";
+
+export const UserContext = createContext();
 
 function App() {
+  const [user, setUser] = useState(null);
+  // console.log(user);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider value={[user, setUser]}>
+      {" "}
+      <div className="app">
+        {!user ? (
+          <Login />
+        ) : (
+          <>
+            <Header />
+            <div className="app__body">
+              <Sidebar />
+              <Feed />
+              {/* wigdets */}
+            </div>
+          </>
+        )}
+      </div>
+    </UserContext.Provider>
   );
 }
 
