@@ -1,6 +1,6 @@
 # Facebook Clone
 
-In that build I've use react for the front-end and for hosting and backend is firebase
+In that build I've use React and Material-ui for the front-end and for hosting and backend is firebase
 
 # App Features
 
